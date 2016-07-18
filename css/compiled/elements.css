@@ -1064,6 +1064,32 @@ label {
 	font-size: 13px; 
 	line-height: 20px; 
 }
+.dd-head{
+
+	 		width:30px !important;
+	 		margin:0 0 !important;
+	 		padding:0 0 !important;
+	 		text-align: center;
+	 		padding-top: 4px !important;
+	 		background: #E1E1E1 !important;
+	 		display: inline-block !important;
+	 		position: absolute !important;
+	 	}
+.dd-body{
+	background: none repeat scroll 0 0 #F6F6F8 ;
+	border: 1px solid #e1e1e1 !important;
+	border-radius: 0 !important;
+	color: #000000;
+	display: block !important;
+	font-size: 0.875em !important;
+	font-weight: 700 !important;
+	height: 30px !important;
+	margin: 5px 0 !important;
+	padding: 5px 0px 5px 40px !important;
+	/*text-decoration: none !important;*/
+	box-sizing: border-box !important; 
+	-moz-box-sizing: border-box !important;
+}
 .dd-handle-list {
 	position: absolute;
 	width: 30px;
