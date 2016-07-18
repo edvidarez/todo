@@ -2,7 +2,8 @@
 <html>
 <head>
 	<?php 
-		include "head.php";
+		include_once "head.php";
+		include_once "data/connection.php";
 	 ?>
 </head>
 <body>
@@ -19,7 +20,8 @@
 											<ul class="nav nav-tabs pull-right">
 												<li class="active"><a href="#tab-todo" data-toggle="tab">Todo</a></li>
 												<li><a href="#tab-users" data-toggle="tab">Users</a></li>
-												<li><a href="#tab-products" data-toggle="tab">Products</a></li>
+												<!-- <li><a href="#tab-products" data-toggle="tab">Products</a></li> -->
+												<li><a href="#tab-products" data-toggle="tab" class="btn btn-success">Add new Task</a></li>
 												
 											</ul>
 										</div>
@@ -27,6 +29,58 @@
 										<div class="tab-content">
 											<div class="tab-pane fade in active" id="tab-todo">
 												<ul class="widget-todo">
+												<?php 
+												$rs=mysqli_query($link, "SELECT * from todo where id_usuario=1 or id_equipo=1") ;
+													if ($rs) 
+														while($row=mysqli_fetch_array($rs,MYSQLI_ASSOC))
+														{
+															$id=$row['id_todo'];
+															$titulo= $row['titulo'];
+															$importancia=$row['importancia'];
+															$status=$row['status'];
+
+													        echo "<li class='clearfix'> <div class='name'> <div class='checkbox-nice'>";
+													        $box="<input type='checkbox' id='todo-".$id."'\>";
+													        echo $box;
+													        echo "<label for='todo-".$id."'>".$titulo."  ";
+													        switch ($importancia) {
+													        	case 3:
+													        		echo '<span class="label label-danger">High Priority</span>';
+													        		break;
+													        	case 2:
+													        		echo '<span class="label label-warning">Medium Priority</span>';
+													        		break;
+													        	case 1:
+													        		echo "<span class='label label-success'>Low Priority</span>";
+													        		break;
+													        	default:
+													        		
+													        		break;
+													        }
+													        
+													        ?>
+													        </label>
+															</div>
+														</div>
+														<div class="actions">
+															<a href="#" class="table-link">
+																<i class="fa fa-pencil"></i>
+															</a>
+															<a href="#" class="table-link danger">
+																<i class="fa fa-trash-o"></i>
+															</a>
+															<a href="#" class="table-link badge">
+																<i class="fa fa-cog"></i>
+															</a>
+														</div>
+													</li>
+													        <?php 
+
+
+													    }
+													    
+												 ?>
+												
 													<li class="clearfix">
 														<div class="name">
 															<div class="checkbox-nice">
